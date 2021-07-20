@@ -43,11 +43,12 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
     'allauth',  # new
     'allauth.account',  # new
     'allauth.socialaccount',  # new
     'rest_auth',
-    'rest_auth.registration', # new
+    'rest_auth.registration',  # new
 
 ]
 
@@ -140,7 +141,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication'
     ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 
 }
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
-SITE_ID = 1 # new
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # new
+SITE_ID = 1  # new
+
+SWAGGER_SETTINGS = {
+'LOGIN_URL': 'rest_framework:login',
+'LOGOUT_URL': 'rest_framework:logout',
+}
